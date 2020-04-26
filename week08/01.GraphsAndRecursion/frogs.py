@@ -12,10 +12,7 @@ def create_swamp(number_of_lilypads, sign1, sign2):
 
 def lists_to_strings(lists_to_convert):
     for curr_list in lists_to_convert:
-        helper = ''
-        for character in curr_list:
-            helper += character
-        print(helper)
+        print(''.join(curr_list))
 
 
 def change_frogs_positions(lilypads, old_index_free_lilypad, new_index_free_lilypad):
@@ -32,7 +29,7 @@ def frogs(number_of_lilypads):
     index_free_lilypad = number_of_lilypads // 2
     jumps_list = [beginning[:]]
 
-    def recursive_call(beginning, end, index_free_lilypad, jumps_list, new_index_free_lilypad):
+    def find_next_jump(beginning, end, index_free_lilypad, jumps_list, new_index_free_lilypad):
         beginning = change_frogs_positions(beginning, index_free_lilypad, new_index_free_lilypad)
         hold_index = index_free_lilypad
         index_free_lilypad = new_index_free_lilypad
@@ -50,16 +47,16 @@ def frogs(number_of_lilypads):
             return
 
         if index_free_lilypad - 1 >= 0 and beginning[index_free_lilypad - 1] == '>':
-            recursive_call(beginning, end, index_free_lilypad, jumps_list, index_free_lilypad - 1)
+            find_next_jump(beginning, end, index_free_lilypad, jumps_list, index_free_lilypad - 1)
 
         if index_free_lilypad - 2 >= 0 and beginning[index_free_lilypad - 2] == '>':
-            recursive_call(beginning, end, index_free_lilypad, jumps_list, index_free_lilypad - 2)
+            find_next_jump(beginning, end, index_free_lilypad, jumps_list, index_free_lilypad - 2)
 
         if index_free_lilypad + 1 < len(beginning) and beginning[index_free_lilypad + 1] == '<':
-            recursive_call(beginning, end, index_free_lilypad, jumps_list, index_free_lilypad + 1)
+            find_next_jump(beginning, end, index_free_lilypad, jumps_list, index_free_lilypad + 1)
 
         if index_free_lilypad + 2 < len(beginning) and beginning[index_free_lilypad + 2] == '<':
-            recursive_call(beginning, end, index_free_lilypad, jumps_list, index_free_lilypad + 2)
+            find_next_jump(beginning, end, index_free_lilypad, jumps_list, index_free_lilypad + 2)
     find_path(beginning, end, index_free_lilypad, jumps_list)
 
 
