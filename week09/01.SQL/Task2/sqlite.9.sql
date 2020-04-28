@@ -1,0 +1,5 @@
+SELECT starname 
+FROM STARSIN 
+JOIN MOVIE
+on STARSIN.movietitle = MOVIE.Title
+WHERE year="1995" AND STUDIONAME="MGM"

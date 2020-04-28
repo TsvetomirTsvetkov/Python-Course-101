@@ -1,0 +1,4 @@
+SELECT starname 
+FROM STARSIN JOIN MOVIESTAR
+on STARSIN.STARNAME = MOVIESTAR.NAME
+WHERE Movietitle="Terms of Endearment" AND gender="M"

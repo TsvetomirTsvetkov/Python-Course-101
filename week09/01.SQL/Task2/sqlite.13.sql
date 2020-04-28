@@ -1,0 +1,3 @@
+SELECT president
+FROM STUDIO
+WHERE name="MGM"
